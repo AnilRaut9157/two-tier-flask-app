@@ -14,7 +14,7 @@ pipeline {
         stage("SonarQube Quality Analysis"){
             steps{
                 withSonarQubeEnv("sonar"){
-                    sh "$SONAR_HOME/bin/sonar -Dsonar.projectName=flaskapp -Dsonar.projectkey=flaskapp"
+                    sh "$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=flaskapp -Dsonar.projectkey=flaskapp"
                 }
             }
         }
