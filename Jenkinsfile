@@ -21,7 +21,7 @@ pipeline {
                         -Dsonar.projectKey=flaskapp \
                         -Dsonar.projectName=flaskapp \
                         -Dsonar.host.url=http://52.156.130.1:9000/ \
-                        -Dsonar.login=$sonar
+                        -Dsonar.login=$SONAR_TOKEN
                         '''
                     }
                 }
