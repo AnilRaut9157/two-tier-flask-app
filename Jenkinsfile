@@ -1,10 +1,21 @@
 pipeline {
     agent any
+
+    environment{
+        SONAR_HOME= tool "sonar"
+    }
     
     stages{
         stage("Code"){
             steps{
                 git url: "https://github.com/AnilRaut9157/two-tier-flask-app.git", branch: "master"
+            }
+        }
+        stage("SonarQube Quality Analysis"){
+            steps{
+                withSonarQubeEnv("sonar"){
+                    sh "$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=flaskapp -Dsonar.projectkey=flaskapp"
+                }
             }
         }
         stage("Build & Test"){
