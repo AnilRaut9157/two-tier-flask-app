@@ -15,15 +15,14 @@ pipeline {
         stage("SonarQube Quality Analysis") {
             steps {
                 withSonarQubeEnv("sonar") {
-                    withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
+                  
                         sh '''
                         $SONAR_HOME/bin/sonar-scanner \
                         -Dsonar.projectKey=flaskapp \
                         -Dsonar.projectName=flaskapp \
-                        -Dsonar.host.url=http://52.156.130.1:9000/ \
-                        -Dsonar.login=$SONAR_TOKEN
+                        
                         '''
-                    }
+                    
                 }
             }
         }
